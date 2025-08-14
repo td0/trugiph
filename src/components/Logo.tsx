@@ -1,17 +1,33 @@
 import { Box, Typography, type TypographyProps } from "@mui/material";
+import { useNavigate, useLocation } from "@tanstack/react-router";
 
 type LogoProps = TypographyProps;
 
 export function Logo(props: LogoProps) {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isOnHomePage = location.pathname === "/";
+
+  const handleClick = () => {
+    if (!isOnHomePage) {
+      navigate({ to: "/" });
+    }
+  };
+
   return (
     <Typography
       variant={props.variant || "h5"}
       component="h1"
+      onClick={handleClick}
       sx={{
         fontFamily: "'Space Mono', monospace",
         fontStyle: "italic",
         fontWeight: "bold",
         display: "inline",
+        cursor: isOnHomePage ? "default" : "pointer",
+        opacity: isOnHomePage ? 1 : 0.9,
+        transition: "all 0.2s ease",
+        userSelect: "none",
         ...props.sx,
       }}
     >
