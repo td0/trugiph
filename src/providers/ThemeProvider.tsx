@@ -6,11 +6,27 @@ import {
 import { type ReactNode } from "react";
 
 const theme = createTheme({
-  palette: {
-    mode: "light",
+  cssVariables: {
+    colorSchemeSelector: 'class',
+  },
+  colorSchemes: {
+    light: true,
+    dark: true,
   },
   typography: {
     fontFamily: '"Space Mono", "Helvetica", "Arial", sans-serif',
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        '*': {
+          transition: 'background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out',
+        },
+        body: {
+          transition: 'background-color 0.3s ease-in-out, color 0.3s ease-in-out',
+        },
+      },
+    },
   },
 });
 
