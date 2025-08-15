@@ -1,8 +1,11 @@
-import { IconButton } from "@mui/material";
-import { DarkMode, LightMode } from "@mui/icons-material";
+import { IconButton, type IconButtonProps } from "@mui/material";
+import {
+  DarkMode as DarkModeIcon,
+  LightMode as LightModeIcon,
+} from "@mui/icons-material";
 import { useColorScheme } from "@mui/material/styles";
 
-export function ThemeToggle() {
+export function ThemeToggle(prop: IconButtonProps) {
   const { mode, setMode } = useColorScheme();
   const isDarkMode = mode === "dark";
 
@@ -16,27 +19,27 @@ export function ThemeToggle() {
 
   return (
     <IconButton
+      size="small"
       onClick={handleToggle}
-      color="inherit"
       aria-label="toggle theme"
-      size="medium"
-      sx={{ position: "relative" }}
+      {...prop}
     >
-      <DarkMode
+      <DarkModeIcon
+        fontSize="small"
         sx={{
-          position: "absolute",
-          transition: "all 0.3s ease-in-out",
+          transition: "transform 0.5s ease-in-out",
           transform: !isDarkMode
-            ? "rotate(360deg) scale(0)"
+            ? "rotate(-720deg) scale(0)"
             : "rotate(0deg) scale(1)",
         }}
       />
-      <LightMode
+      <LightModeIcon
+        fontSize="small"
         sx={{
           position: "absolute",
-          transition: "all 0.3s ease-in-out",
+          transition: "transform 0.5s ease-in-out",
           transform: isDarkMode
-            ? "rotate(-360deg) scale(0)"
+            ? "rotate(720deg) scale(0)"
             : "rotate(0deg) scale(1)",
         }}
       />
