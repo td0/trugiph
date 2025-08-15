@@ -13,6 +13,335 @@ function App() {
               component="h1"
               sx={{ textAlign: "center" }}
             >
+              FIRST11 Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
+              Welcome to TruGiph
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ textAlign: "center" }}
+            >
               Welcome to TruGiph
             </Typography>
           </Container>

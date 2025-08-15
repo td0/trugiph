@@ -12,10 +12,10 @@ import {
 } from "@mui/material";
 import { Search as SearchIcon, Close as CloseIcon } from "@mui/icons-material";
 import { useColorScheme } from "@mui/material/styles";
+import { AnimationToggle } from "./AnimationToggle";
 import { ThemeToggle } from "./ThemeToggle";
-import { Logo } from "./Logo";
 import { SearchInput } from "./SearchInput";
-import AnimationToggle from "./AnimationToggle";
+import { Logo } from "./Logo";
 
 export function AppBar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -46,10 +46,11 @@ export function AppBar() {
     <>
       <MuiAppBar
         elevation={0}
+        color="transparent"
         sx={{
           backgroundColor: isDarkMode
-            ? "rgba(26, 29, 41, 0.2)"
-            : "rgba(255, 255, 255, 0.2)",
+            ? "rgba(26, 29, 41, 0.3)"
+            : "rgba(255, 255, 255, 0.3)",
           backdropFilter: "blur(20px)",
           borderBottom: isDarkMode
             ? "1px solid rgba(255, 255, 255, 0.1)"
@@ -196,8 +197,8 @@ export function AppBar() {
           right: 0,
           zIndex: 1300,
           backgroundColor: isDarkMode
-            ? "rgba(26, 29, 41, 0.2)"
-            : "rgba(255, 255, 255, 0.2)",
+            ? "rgba(26, 29, 41, 0.3)"
+            : "rgba(255, 255, 255, 0.3)",
           backdropFilter: "blur(20px)",
           WebkitBackdropFilter: "blur(20px)",
           borderTop: "1px solid",

@@ -2,7 +2,7 @@ import { IconButton, type IconButtonProps } from "@mui/material";
 import { PlayArrow as PlayIcon, Pause as PauseIcon } from "@mui/icons-material";
 import { useState } from "react";
 
-export default function AnimationToggle(prop: IconButtonProps) {
+export function AnimationToggle(prop: IconButtonProps) {
   const [isPaused, setIsPaused] = useState(false);
 
   return (
