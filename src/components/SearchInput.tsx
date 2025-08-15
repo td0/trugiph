@@ -1,20 +1,31 @@
-import { TextField, InputAdornment, type TextFieldProps } from "@mui/material";
-import { Search as SearchIcon } from "@mui/icons-material";
+import {
+  TextField,
+  InputAdornment,
+  IconButton,
+  type TextFieldProps,
+} from "@mui/material";
+import { Search as SearchIcon, Clear as ClearIcon } from "@mui/icons-material";
 
 interface SearchInputProps
   extends Omit<TextFieldProps, "onChange" | "onKeyDown" | "variant"> {
   value: string;
   onChange: (value: string) => void;
   onSearch?: (value: string) => void;
+  onClear?: () => void;
   placeholder?: string;
   searchVariant?: "compact" | "expanded" | "bottom";
+  showSearchButton?: boolean;
+  showClearButton?: boolean;
 }
 
 export function SearchInput({
   value,
   onChange,
   onSearch,
+  onClear,
   searchVariant = "expanded",
+  showSearchButton = true,
+  showClearButton = true,
   ...props
 }: SearchInputProps) {
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -25,18 +36,6 @@ export function SearchInput({
 
   const getVariantStyles = () => {
     switch (searchVariant) {
-      case "compact":
-        return {
-          "& .MuiOutlinedInput-root": {
-            borderRadius: 2,
-          },
-        };
-      case "expanded":
-        return {
-          "& .MuiOutlinedInput-root": {
-            borderRadius: 2,
-          },
-        };
       case "bottom":
         return {
           "& .MuiOutlinedInput-root": {
@@ -49,16 +48,20 @@ export function SearchInput({
     }
   };
 
-  const getIconSize = () => {
-    switch (searchVariant) {
-      case "compact":
-        return 20;
-      case "bottom":
-        return 24;
-      default:
-        return undefined;
+  const handleClear = () => {
+    onChange("");
+    if (onClear) {
+      onClear();
     }
   };
+
+  const handleSearchClick = () => {
+    if (onSearch) {
+      onSearch(value);
+    }
+  };
+
+  const isDirty = value.length > 0;
 
   return (
     <TextField
@@ -69,14 +72,38 @@ export function SearchInput({
       placeholder="Search for GIFs..."
       slotProps={{
         input: {
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon
-                sx={{
-                  color: "text.secondary",
-                  fontSize: getIconSize(),
-                }}
-              />
+          endAdornment: (
+            <InputAdornment position="end">
+              {showClearButton && isDirty && (
+                <IconButton
+                  size="small"
+                  onClick={handleClear}
+                  sx={{
+                    transition: "all 0.2s ease",
+                    "&:hover": {
+                      backgroundColor: "action.hover",
+                    },
+                  }}
+                >
+                  <ClearIcon fontSize="small" />
+                </IconButton>
+              )}
+              {showSearchButton && (
+                <IconButton
+                  size="small"
+                  onClick={handleSearchClick}
+                  disabled={!isDirty}
+                  sx={{
+                    ml: showClearButton && isDirty ? 0.5 : 0,
+                    transition: "all 0.2s ease",
+                    "&:hover": {
+                      backgroundColor: "action.hover",
+                    },
+                  }}
+                >
+                  <SearchIcon fontSize="small" />
+                </IconButton>
+              )}
             </InputAdornment>
           ),
         },

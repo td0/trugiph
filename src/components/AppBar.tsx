@@ -89,7 +89,7 @@ export function AppBar() {
                   right: isScrolled ? "4.5rem" : "50%",
                   transform: isScrolled ? "none" : "translateX(50%)",
                   flexGrow: isScrolled ? 1 : 0,
-                  maxWidth: 400,
+                  maxWidth: isScrolled ? 400 : "50%",
                   width: isScrolled ? "auto" : "100%",
                   mx: isScrolled ? 2 : 0,
                   mt: isScrolled ? 0 : 2,
@@ -107,7 +107,6 @@ export function AppBar() {
                   onChange={setSearchQuery}
                   onSearch={handleSearch}
                   sx={{
-                    maxWidth: 400,
                     width: "100%",
                     transition: "all 0.3s ease",
                   }}
@@ -179,10 +178,8 @@ export function AppBar() {
         >
           <SearchIcon
             sx={{
-              transition: "transform 0.3s ease-in-out",
-              transform: isBottomSearchOpen
-                ? "rotate(-720deg) scale(0)"
-                : "rotate(0) scale(1)",
+              transition: "opacity 0.3s ease-in-out",
+              opacity: isBottomSearchOpen ? 0 : 1,
             }}
           />
         </Fab>
