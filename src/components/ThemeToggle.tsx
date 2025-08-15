@@ -29,7 +29,7 @@ export function ThemeToggle(prop: IconButtonProps) {
         sx={{
           transition: "transform 0.5s ease-in-out",
           transform: !isDarkMode
-            ? "rotate(-720deg) scale(0)"
+            ? "rotate(-540deg) scale(0)"
             : "rotate(0deg) scale(1)",
         }}
       />
@@ -39,7 +39,7 @@ export function ThemeToggle(prop: IconButtonProps) {
           position: "absolute",
           transition: "transform 0.5s ease-in-out",
           transform: isDarkMode
-            ? "rotate(720deg) scale(0)"
+            ? "rotate(540deg) scale(0)"
             : "rotate(0deg) scale(1)",
         }}
       />
