@@ -1,5 +1,6 @@
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { QueryProvider, ThemeProvider } from "./providers";
+import { Provider as JotaiProvider } from "jotai";
 
 // Import the generated route tree
 import { routeTree } from "./routeTree.gen";
@@ -16,11 +17,13 @@ declare module "@tanstack/react-router" {
 
 function App() {
   return (
-    <QueryProvider>
-      <ThemeProvider>
-        <RouterProvider router={router} />
-      </ThemeProvider>
-    </QueryProvider>
+    <JotaiProvider>
+      <QueryProvider>
+        <ThemeProvider>
+          <RouterProvider router={router} />
+        </ThemeProvider>
+      </QueryProvider>
+    </JotaiProvider>
   );
 }
 
