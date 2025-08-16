@@ -3,7 +3,6 @@ import { Box, Skeleton, Snackbar, useColorScheme } from "@mui/material";
 import { createPortal } from "react-dom";
 import { useAtomValue } from "jotai";
 import { animationPausedAtom } from "@/stores/animationStore";
-import { copyImageWithFallback } from "@/utils/clipboardUtils";
 
 interface ImageWithSkeletonProps {
   src: string;
@@ -34,10 +33,15 @@ export function ImageWithSkeleton({
 
   const handleClick = async () => {
     try {
-      await copyImageWithFallback(src, srcStatic, animationPaused);
+      const url = new URL(src);
+      const pathSegments = url.pathname.split("/");
+      pathSegments[pathSegments.length - 1] = "giphy.gif";
+      url.pathname = pathSegments.join("/");
+
+      navigator.clipboard.writeText(url.toString());
       setOpen(true);
     } catch (error) {
-      console.error('Failed to copy:', error);
+      console.error("Failed to copy:", error);
       setOpen(true);
     }
   };
