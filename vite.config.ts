@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 
 // https://vitejs.dev/config/
-export default defineConfig(() => ({
+export default defineConfig(({ mode }) => ({
   plugins: [
     tanstackRouter({
       routesDirectory: "./src/routes",
@@ -18,7 +18,8 @@ export default defineConfig(() => ({
       "@": "/src",
     },
   },
-  base: "/trugiph/",
+  // Use root base in dev, GitHub Pages subpath in prod
+  base: mode === "development" ? "/" : "/trugiph/",
   build: {
     rollupOptions: {
       external: (id) => {
