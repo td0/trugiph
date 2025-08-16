@@ -19,7 +19,6 @@ import { Logo } from "./Logo";
 
 export function AppBar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
   const [isBottomSearchOpen, setIsBottomSearchOpen] = useState(false);
 
   const theme = useTheme();
@@ -35,12 +34,6 @@ export function AppBar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-    setIsBottomSearchOpen(false);
-    // TODO: Implement search functionality
-  };
 
   return (
     <>
@@ -103,9 +96,6 @@ export function AppBar() {
                 <SearchInput
                   size={isScrolled ? "small" : "medium"}
                   searchVariant={isScrolled ? "compact" : "expanded"}
-                  value={searchQuery}
-                  onChange={setSearchQuery}
-                  onSearch={handleSearch}
                   sx={{
                     width: "100%",
                     transition: "all 0.3s ease",
@@ -121,9 +111,7 @@ export function AppBar() {
                       transition: "opacity 0.3s ease",
                     }}
                   >
-                    {searchQuery
-                      ? `Search results for "${searchQuery}"`
-                      : "Discover trending GIFs"}
+                    Discover trending GIFs
                   </Typography>
                 )}
               </Box>
@@ -225,9 +213,7 @@ export function AppBar() {
             <SearchInput
               autoFocus
               searchVariant="expanded"
-              value={searchQuery}
-              onChange={setSearchQuery}
-              onSearch={handleSearch}
+              onSearch={() => setIsBottomSearchOpen(false)}
               sx={{
                 width: "100%",
                 transition: "all 0.3s ease",

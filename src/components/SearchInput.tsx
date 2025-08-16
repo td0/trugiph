@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   TextField,
   InputAdornment,
@@ -5,11 +6,11 @@ import {
   type TextFieldProps,
 } from "@mui/material";
 import { Search as SearchIcon, Clear as ClearIcon } from "@mui/icons-material";
+import { useNavigate, useParams } from "@tanstack/react-router";
 
 interface SearchInputProps
-  extends Omit<TextFieldProps, "onChange" | "onKeyDown" | "variant"> {
-  value: string;
-  onChange: (value: string) => void;
+  extends Omit<TextFieldProps, "onChange" | "onKeyDown" | "variant" | "value"> {
+  initialValue?: string;
   onSearch?: (value: string) => void;
   onClear?: () => void;
   placeholder?: string;
@@ -19,8 +20,7 @@ interface SearchInputProps
 }
 
 export function SearchInput({
-  value,
-  onChange,
+  initialValue = "",
   onSearch,
   onClear,
   searchVariant = "expanded",
@@ -28,9 +28,34 @@ export function SearchInput({
   showClearButton = true,
   ...props
 }: SearchInputProps) {
+  const navigate = useNavigate();
+  const params = useParams({ strict: false });
+
+  // Get initial value from URL params (keyword) or fallback to prop
+  const getInitialValue = () => {
+    if (params?.keyword) {
+      return params.keyword;
+    }
+    return initialValue;
+  };
+
+  const [value, setValue] = useState(getInitialValue);
+
+  const handleSearchSubmit = () => {
+    if (value.trim()) {
+      // Navigate to search page
+      navigate({ to: "/search/$keyword", params: { keyword: value.trim() } });
+
+      // Call optional onSearch callback for additional handling (like closing mobile search)
+      if (onSearch) {
+        onSearch(value);
+      }
+    }
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && onSearch) {
-      onSearch(value);
+    if (e.key === "Enter") {
+      handleSearchSubmit();
     }
   };
 
@@ -49,16 +74,14 @@ export function SearchInput({
   };
 
   const handleClear = () => {
-    onChange("");
+    setValue("");
     if (onClear) {
       onClear();
     }
   };
 
   const handleSearchClick = () => {
-    if (onSearch) {
-      onSearch(value);
-    }
+    handleSearchSubmit();
   };
 
   const isDirty = value.length > 0;
@@ -67,7 +90,7 @@ export function SearchInput({
     <TextField
       fullWidth
       value={value}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={(e) => setValue(e.target.value)}
       onKeyDown={handleKeyDown}
       placeholder="Search for GIFs..."
       slotProps={{
