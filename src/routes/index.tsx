@@ -30,7 +30,7 @@ function HomePage() {
           component="h1"
           sx={{ textAlign: "center", mb: 2, fontStyle: "italic" }}
         >
-          Welcome
+          Trending GIFs
         </Typography>
 
         <VirtualizedMasonryGrid

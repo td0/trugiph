@@ -214,7 +214,6 @@ export function AppBar() {
           px: 2,
           pb: "calc(22px + env(safe-area-inset-bottom))",
           transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-          borderRadius: isBottomSearchOpen ? 0 : "50%",
           transform: isBottomSearchOpen
             ? "translateX(0) scale(1)"
             : "translateX(100%) scale(0)",
