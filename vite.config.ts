@@ -18,7 +18,7 @@ export default defineConfig({
       "@": "/src",
     },
   },
-  base: "/trugiph/",
+  base: "/",
   build: {
     rollupOptions: {
       external: (id) => {
@@ -26,7 +26,8 @@ export default defineConfig({
         return (
           id.includes("__tests__") ||
           id.includes(".test.") ||
-          id.includes(".spec.")
+          id.includes(".spec.") ||
+          id.includes("/test/")
         );
       },
     },
