@@ -10,7 +10,7 @@ export function MainLayout({ children }: MainLayoutProps) {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       <AppBar />
-      <Box component="main" sx={{ flexGrow: 1 }}>
+      <Box component="main" sx={{ flexGrow: 1, mt: 4, mb: 12 }}>
         {children}
       </Box>
     </Box>
