@@ -18,7 +18,7 @@ export default defineConfig({
       "@": "/src",
     },
   },
-  base: "/trugiph",
+  base: "/trugiph/",
   build: {
     rollupOptions: {
       external: (id) => {
