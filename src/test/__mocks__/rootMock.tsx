@@ -1,5 +1,7 @@
+const MockRootComponent = () => null;
+
 export const Route = {
-  component: () => null,
+  component: MockRootComponent,
 };
 
-export default () => null;
+export default MockRootComponent;

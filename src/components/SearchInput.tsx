@@ -51,7 +51,7 @@ export function SearchInput({
     }
   }, [location.pathname, params?.keyword]);
 
-  const handleSearchSubmit = () => {
+  const handleSubmit = (_event?: React.FormEvent) => {
     if (value.trim()) {
       // Navigate to search page
       navigate({ to: "/search/$keyword", params: { keyword: value.trim() } as any });
@@ -65,7 +65,7 @@ export function SearchInput({
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
-      handleSearchSubmit();
+      handleSubmit(e);
     }
   };
 
@@ -91,7 +91,7 @@ export function SearchInput({
   };
 
   const handleSearchClick = () => {
-    handleSearchSubmit();
+    handleSubmit({} as React.FormEvent);
   };
 
   const isDirty = value.length > 0;

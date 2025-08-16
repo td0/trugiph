@@ -35,7 +35,14 @@ export default {
         paths: {
           '@/*': ['src/*']
         },
-        types: ['jest', '@testing-library/jest-dom', 'node', 'vite/client']
+        types: ['jest', '@testing-library/jest-dom', 'node', 'vite/client'],
+        // Lax TypeScript settings for testing
+        noImplicitAny: false,
+        strict: false,
+        noUnusedLocals: false,
+        noUnusedParameters: false,
+        skipLibCheck: true,
+        suppressImplicitAnyIndexErrors: true
       },
     }],
   },

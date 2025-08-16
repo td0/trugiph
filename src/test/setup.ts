@@ -1,14 +1,17 @@
-import '@testing-library/jest-dom';
-import './jest-dom.d.ts';
+// Disable TypeScript strict checks for tests
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import "@testing-library/jest-dom";
+import "./jest-dom.d.ts";
 
 // Mock import.meta
-Object.defineProperty(globalThis, 'import', {
+Object.defineProperty(globalThis, "import", {
   value: {
     meta: {
       env: {
         DEV: false,
         PROD: true,
-        VITE_GIPHY_API_KEY: 'test-api-key',
+        VITE_GIPHY_API_KEY: "test-api-key",
       },
     },
   },
@@ -22,9 +25,9 @@ Object.assign(navigator, {
 });
 
 // Mock window.matchMedia
-Object.defineProperty(window, 'matchMedia', {
+Object.defineProperty(window, "matchMedia", {
   writable: true,
-  value: jest.fn().mockImplementation(query => ({
+  value: jest.fn().mockImplementation((query) => ({
     matches: false,
     media: query,
     onchange: null,

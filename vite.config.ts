@@ -1,30 +1,33 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { tanstackRouter } from "@tanstack/router-plugin/vite";
+import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 
-// https://vite.dev/config/
+// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    react(),
-    tanstackRouter({
+    TanStackRouterVite({
       routesDirectory: "./src/routes",
       generatedRouteTree: "./src/routeTree.gen.ts",
       routeFileIgnorePrefix: "-",
       quoteStyle: "single",
     }),
+    react(),
   ],
   resolve: {
     alias: {
       "@": "/src",
     },
   },
+  base: "/trugiph/",
   build: {
     rollupOptions: {
       external: (id) => {
         // Exclude test files from build
-        return id.includes('__tests__') || 
-               id.includes('.test.') || 
-               id.includes('.spec.');
+        return (
+          id.includes("__tests__") ||
+          id.includes(".test.") ||
+          id.includes(".spec.")
+        );
       },
     },
   },
