@@ -11,6 +11,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { Search as SearchIcon, Close as CloseIcon } from "@mui/icons-material";
+import { useParams } from "@tanstack/react-router";
 import { useColorScheme } from "@mui/material/styles";
 import { AnimationToggle } from "./AnimationToggle";
 import { ThemeToggle } from "./ThemeToggle";
@@ -20,6 +21,8 @@ import { Logo } from "./Logo";
 export function AppBar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isBottomSearchOpen, setIsBottomSearchOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const params = useParams({ strict: false });
 
   const theme = useTheme();
   const { mode: colorMode } = useColorScheme();
@@ -34,6 +37,15 @@ export function AppBar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Keep searchValue in sync with route params so both inputs reflect URL
+  useEffect(() => {
+    if (params?.keyword) {
+      setSearchValue(params.keyword);
+    } else {
+      setSearchValue("");
+    }
+  }, [params?.keyword]);
 
   return (
     <>
@@ -96,6 +108,8 @@ export function AppBar() {
                 <SearchInput
                   size={isScrolled ? "small" : "medium"}
                   searchVariant={isScrolled ? "compact" : "expanded"}
+                  value={searchValue}
+                  onChange={(v) => setSearchValue(v)}
                   sx={{
                     width: "100%",
                     transition: "all 0.3s ease",
@@ -111,7 +125,9 @@ export function AppBar() {
                       transition: "opacity 0.3s ease",
                     }}
                   >
-                    Discover trending GIFs
+                    {searchValue.trim().length > 0
+                      ? "Press Enter to search"
+                      : "Discover trending GIFs"}
                   </Typography>
                 )}
               </Box>
@@ -214,6 +230,8 @@ export function AppBar() {
               autoFocus
               searchVariant="expanded"
               onSearch={() => setIsBottomSearchOpen(false)}
+              value={searchValue}
+              onChange={(v) => setSearchValue(v)}
               sx={{
                 width: "100%",
                 transition: "all 0.3s ease",

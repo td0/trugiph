@@ -72,7 +72,9 @@ function SearchPage() {
       {items.length > 0 && (
         <Box sx={{ textAlign: "center", py: 4 }}>
           <Typography variant="body2" color="text.secondary">
-            💡 Scroll down to load more search results
+            {hasNextPage
+              ? "💡 Scroll down to load more search results"
+              : "🎉 You're all caught up"}
           </Typography>
         </Box>
       )}

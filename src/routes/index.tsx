@@ -44,7 +44,9 @@ function HomePage() {
 
       <Box sx={{ textAlign: "center", py: 4 }}>
         <Typography variant="body2" color="text.secondary">
-          💡 Scroll down to load more GIFs automatically
+          {hasNextPage
+            ? "💡 Scroll down to load more GIFs automatically"
+            : "🎉 You're all caught up"}
         </Typography>
       </Box>
     </Box>

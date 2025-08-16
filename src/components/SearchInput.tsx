@@ -6,12 +6,13 @@ import {
   type TextFieldProps,
 } from "@mui/material";
 import { Search as SearchIcon, Clear as ClearIcon } from "@mui/icons-material";
-import { useNavigate, useParams, useLocation } from "@tanstack/react-router";
+import { useNavigate, useParams } from "@tanstack/react-router";
 
 interface SearchInputProps
-  extends Omit<TextFieldProps, "onChange" | "onKeyDown" | "variant" | "value"> {
+  extends Omit<TextFieldProps, "onChange" | "onKeyDown" | "variant"> {
   initialValue?: string;
   onSearch?: (value: string) => void;
+  onChange?: (value: string) => void;
   onClear?: () => void;
   placeholder?: string;
   searchVariant?: "compact" | "expanded" | "bottom";
@@ -22,6 +23,7 @@ interface SearchInputProps
 export function SearchInput({
   initialValue = "",
   onSearch,
+  onChange,
   onClear,
   searchVariant = "expanded",
   showSearchButton = true,
@@ -30,7 +32,6 @@ export function SearchInput({
 }: SearchInputProps) {
   const navigate = useNavigate();
   const params = useParams({ strict: false });
-  const location = useLocation();
 
   // Get initial value from URL params (keyword) or fallback to prop
   const getInitialValue = () => {
@@ -41,31 +42,42 @@ export function SearchInput({
   };
 
   const [value, setValue] = useState(getInitialValue);
+  const isControlled = props.value !== undefined;
+  const displayedValue = (props.value as string | undefined) ?? value;
 
-  // Clear search input when navigating to homepage
+  // Clear/sync when not on the search route (robust to basepath). Only when uncontrolled.
   useEffect(() => {
-    if (location.pathname === "/") {
-      setValue("");
-    } else if (params?.keyword) {
+    if (isControlled) return;
+    if (params?.keyword) {
       setValue(params.keyword);
+      onChange?.(params.keyword);
+    } else {
+      setValue("");
+      onChange?.("");
     }
-  }, [location.pathname, params?.keyword]);
+  }, [params?.keyword, onChange, isControlled]);
 
-  const handleSubmit = (_event?: React.FormEvent) => {
-    if (value.trim()) {
+  const handleSubmit = () => {
+    const trimmed = displayedValue.trim();
+    if (trimmed) {
       // Navigate to search page
-      navigate({ to: "/search/$keyword", params: { keyword: value.trim() } as any });
-
-      // Call optional onSearch callback for additional handling (like closing mobile search)
-      if (onSearch) {
-        onSearch(value);
+      navigate({
+        to: "/search/$keyword",
+        params: { keyword: trimmed },
+      });
+      onSearch?.(trimmed);
+    } else {
+      // Empty -> if on search route, go home; if already on home, do nothing
+      if (params?.keyword) {
+        navigate({ to: "/" });
       }
+      onSearch?.("");
     }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
-      handleSubmit(e);
+      handleSubmit();
     }
   };
 
@@ -84,23 +96,28 @@ export function SearchInput({
   };
 
   const handleClear = () => {
-    setValue("");
+    if (!isControlled) setValue("");
+    onChange?.("");
     if (onClear) {
       onClear();
     }
   };
 
   const handleSearchClick = () => {
-    handleSubmit({} as React.FormEvent);
+    handleSubmit();
   };
 
-  const isDirty = value.length > 0;
+  const isDirty = displayedValue.length > 0;
 
   return (
     <TextField
       fullWidth
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
+      value={displayedValue}
+      onChange={(e) => {
+        const next = e.target.value;
+        if (!isControlled) setValue(next);
+        onChange?.(next);
+      }}
       onKeyDown={handleKeyDown}
       placeholder="Search for GIFs..."
       slotProps={{
@@ -125,7 +142,6 @@ export function SearchInput({
                 <IconButton
                   size="small"
                   onClick={handleSearchClick}
-                  disabled={!isDirty}
                   sx={{
                     ml: showClearButton && isDirty ? 0.5 : 0,
                     transition: "all 0.2s ease",
