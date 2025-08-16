@@ -16,6 +16,12 @@ dist-ssr
 src/routeTree.gen.ts
 .tanstack/tmp
 
+# Environment variables
+.env
+.env.local
+.env.production
+.env.staging
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
