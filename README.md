@@ -1,6 +1,6 @@
 # TruGiph
 
-A modern, responsive GIPHY gallery and search application built with React, TypeScript, and Material UI. This project demonstrates clean architecture, comprehensive testing, and modern web development practices.
+Built to liven up remote team chats with light‑hearted GIFs that make everyday conversations more engaging and fun.. This project demonstrates clean architecture, comprehensive testing, and modern web development practices.
 
 ## 🎯 GIPHY API Integration
 
@@ -11,9 +11,7 @@ This application leverages the **GIPHY API v1** to provide a rich GIF browsing a
 - **Implementation**: Powers the home page with dynamic trending content
 - **Features**: 
   - Real-time trending data updated by GIPHY
-  - Configurable result limits (default: 25 GIFs per request)
   - Pagination support for infinite scrolling
-  - Rating filters (G, PG, PG-13, R)
 
 ### 🔍 **Search Endpoint** (`/v1/gifs/search`)
 - **Purpose**: Enables users to search GIFs by keywords and phrases
@@ -23,7 +21,7 @@ This application leverages the **GIPHY API v1** to provide a rich GIF browsing a
   - Infinite scroll pagination with offset-based loading
   - Query parameter encoding for special characters
   - Relevance-based result ranking
-  - Search suggestions and autocomplete support
+  - Pagination support for infinite scrolling
 
 ### 🔧 **API Configuration**
 ```typescript
@@ -48,12 +46,6 @@ interface GiphyResponse {
 }
 ```
 
-### 🛡️ **Security & Best Practices**
-- **API Key Management**: Secure environment variable storage
-- **Rate Limiting**: Built-in request throttling and error handling
-- **Data Transformation**: Clean separation between API data and UI models
-- **Caching Strategy**: TanStack Query provides intelligent caching and background updates
-- **Error Handling**: Graceful degradation with user-friendly error messages
 
 ## 🚀 Features
 
@@ -64,6 +56,7 @@ interface GiphyResponse {
 - **Animation Toggle**: Switch between animated and static GIF previews
 - **Copy to Clipboard**: One-click GIF URL copying with user feedback
 - **Dark/Light Mode**: Theme switching with system preference detection
+- **Masonry Virtualized Layout**: Responsive masonry grid with virtualization to minimize memory usage and significantly improve scroll performance on large result sets
 
 ### User Experience
 - **Smart Search**: URL-integrated search with navigation
@@ -110,7 +103,7 @@ interface GiphyResponse {
 ## 📋 Prerequisites
 
 - **Node.js** (v18 or higher)
-- **pnpm** (recommended) or npm
+- **pnpm** (>=v10)
 - **GIPHY API Key** - Get one from [GIPHY Developers](https://developers.giphy.com/)
 
 ## 🚀 Getting Started
@@ -126,6 +119,7 @@ pnpm install
 Create a `.env` file in the root directory:
 ```env
 VITE_GIPHY_API_KEY=your_giphy_api_key_here
+VITE_GIPHY_BASE_URL=giphy_base_url
 ```
 
 ### 3. Development Server
@@ -206,14 +200,14 @@ src/
 - **System Preference**: Automatic theme detection
 
 ### Typography
-- **Primary Font**: Roboto (Material UI default)
-- **Logo Font**: Space Mono (italic, monospace)
+- Space Mono (italic, monospace)
 
 ## 🔧 Configuration
 
 ### Environment Variables
 ```env
 VITE_GIPHY_API_KEY=your_api_key    # Required: GIPHY API key
+VITE_GIPHY_BASE_URL=giphy_base_url # Required, see /.env.example
 ```
 
 ### Build Configuration
@@ -247,6 +241,7 @@ This project is configured for automatic deployment to GitHub Pages using GitHub
    # Go to Settings > Secrets and variables > Actions
    # Add repository secret:
    VITE_GIPHY_API_KEY=your_giphy_api_key_here
+   VITE_GIPHY_BASE_URL=giphy_base_url
    ```
 
 3. **Automatic Deployment**

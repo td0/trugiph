@@ -1,9 +1,10 @@
 {
   "name": "trugiph",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "preinstall": "node -e \"const s=(process.env.npm_config_user_agent||process.env.npm_execpath||''); if(!/pnpm/.test(s)){console.error('This project must be installed with pnpm.'); process.exit(1)}\"",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
@@ -12,6 +13,11 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
   },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=9"
+  },
+  "packageManager": "pnpm@9.0.0",
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
