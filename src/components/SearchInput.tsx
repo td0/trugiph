@@ -44,8 +44,8 @@ export function SearchInput({
 
   // Clear search input when navigating to homepage
   useEffect(() => {
-    if (location.pathname === '/') {
-      setValue('');
+    if (location.pathname === "/") {
+      setValue("");
     } else if (params?.keyword) {
       setValue(params.keyword);
     }
@@ -54,7 +54,7 @@ export function SearchInput({
   const handleSearchSubmit = () => {
     if (value.trim()) {
       // Navigate to search page
-      navigate({ to: "/search/$keyword", params: { keyword: value.trim() } });
+      navigate({ to: "/search/$keyword", params: { keyword: value.trim() } as any });
 
       // Call optional onSearch callback for additional handling (like closing mobile search)
       if (onSearch) {

@@ -1,0 +1,10 @@
+export const useNavigate = jest.fn(() => jest.fn());
+export const useParams = jest.fn(() => ({}));
+export const useLocation = jest.fn(() => ({ pathname: '/' }));
+export const useSearch = jest.fn(() => ({}));
+export const createFileRoute = jest.fn(() => ({ component: () => null }));
+export const Link = jest.fn(({ children }) => children);
+export const Outlet = jest.fn(() => null);
+export const RouterProvider = jest.fn(({ children }) => children);
+export const createRouter = jest.fn();
+export const TanStackRouterDevtools = jest.fn(() => null);

@@ -18,4 +18,14 @@ export default defineConfig({
       "@": "/src",
     },
   },
+  build: {
+    rollupOptions: {
+      external: (id) => {
+        // Exclude test files from build
+        return id.includes('__tests__') || 
+               id.includes('.test.') || 
+               id.includes('.spec.');
+      },
+    },
+  },
 });
