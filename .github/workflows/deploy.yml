@@ -61,6 +61,10 @@ jobs:
         env:
           VITE_GIPHY_API_KEY: ${{ secrets.VITE_GIPHY_API_KEY }}
           VITE_GIPHY_BASE_URL: ${{ secrets.VITE_GIPHY_BASE_URL }}
+      
+      - name: Create 404.html for SPA fallback
+        run: |
+          cp dist/index.html dist/404.html
           
       - name: Setup Pages
         uses: actions/configure-pages@v4

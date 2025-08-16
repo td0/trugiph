@@ -6,7 +6,11 @@ import { Provider as JotaiProvider } from "jotai";
 import { routeTree } from "./routeTree.gen";
 
 // Create a new router instance
-const router = createRouter({ routeTree });
+const router = createRouter({
+  routeTree,
+  // Respect GitHub Pages subpath (e.g., /trugiph/)
+  basepath: import.meta.env.BASE_URL,
+});
 
 // Register the router instance for type safety
 declare module "@tanstack/react-router" {
