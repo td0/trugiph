@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   TextField,
   InputAdornment,
@@ -6,7 +6,7 @@ import {
   type TextFieldProps,
 } from "@mui/material";
 import { Search as SearchIcon, Clear as ClearIcon } from "@mui/icons-material";
-import { useNavigate, useParams } from "@tanstack/react-router";
+import { useNavigate, useParams, useLocation } from "@tanstack/react-router";
 
 interface SearchInputProps
   extends Omit<TextFieldProps, "onChange" | "onKeyDown" | "variant" | "value"> {
@@ -30,6 +30,7 @@ export function SearchInput({
 }: SearchInputProps) {
   const navigate = useNavigate();
   const params = useParams({ strict: false });
+  const location = useLocation();
 
   // Get initial value from URL params (keyword) or fallback to prop
   const getInitialValue = () => {
@@ -40,6 +41,15 @@ export function SearchInput({
   };
 
   const [value, setValue] = useState(getInitialValue);
+
+  // Clear search input when navigating to homepage
+  useEffect(() => {
+    if (location.pathname === '/') {
+      setValue('');
+    } else if (params?.keyword) {
+      setValue(params.keyword);
+    }
+  }, [location.pathname, params?.keyword]);
 
   const handleSearchSubmit = () => {
     if (value.trim()) {

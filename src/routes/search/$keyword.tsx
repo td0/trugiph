@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Typography, Box, Container } from "@mui/material";
+import { Typography, Box, Container, CircularProgress } from "@mui/material";
 import { useMemo } from "react";
 import { VirtualizedMasonryGrid } from "@/components/VirtualizedMasonryGrid";
 import { useSearchGifs } from "@/hooks/useGiphy";
@@ -8,7 +8,7 @@ import type { GiphyResponse } from "@/types/giphy";
 
 function SearchPage() {
   const { keyword } = Route.useParams();
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isPending } =
     useSearchGifs(keyword, { limit: 25 });
 
   const items = useMemo(() => {
@@ -42,7 +42,14 @@ function SearchPage() {
           "{keyword}"
         </Typography>
 
-        {items.length === 0 && !isFetchingNextPage ? (
+        {isPending ? (
+          <Box sx={{ textAlign: "center", py: 8 }}>
+            <CircularProgress size={48} sx={{ mb: 2 }} />
+            <Typography variant="h6" color="text.secondary">
+              Searching for "{keyword}"...
+            </Typography>
+          </Box>
+        ) : items.length === 0 ? (
           <Box sx={{ textAlign: "center", py: 8 }}>
             <Typography variant="h6" color="text.secondary">
               No GIFs found for "{keyword}"
