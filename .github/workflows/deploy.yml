@@ -60,6 +60,7 @@ jobs:
         run: pnpm build
         env:
           VITE_GIPHY_API_KEY: ${{ secrets.VITE_GIPHY_API_KEY }}
+          VITE_GIPHY_BASE_URL: ${{ secrets.VITE_GIPHY_BASE_URL }}
           
       - name: Setup Pages
         uses: actions/configure-pages@v4
