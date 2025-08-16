@@ -49,8 +49,8 @@ export function AppBar() {
         color="transparent"
         sx={{
           backgroundColor: isDarkMode
-            ? "rgba(26, 29, 41, 0.3)"
-            : "rgba(255, 255, 255, 0.3)",
+            ? "rgba(26, 29, 41, 0.5)"
+            : "rgba(255, 255, 255, 0.5)",
           backdropFilter: "blur(20px)",
           borderBottom: isDarkMode
             ? "1px solid rgba(255, 255, 255, 0.1)"
@@ -152,38 +152,43 @@ export function AppBar() {
       <Toolbar sx={{ height: isMobile ? "auto" : "12rem" }} />
 
       {/* Floating Search Button */}
-      {isMobile && (
-        <Fab
-          onClick={() => setIsBottomSearchOpen(true)}
+      <Fab
+        onClick={() => setIsBottomSearchOpen(true)}
+        sx={{
+          position: "fixed",
+          bottom: 24,
+          right: 24,
+          zIndex: 1000,
+          transition: "all 0.3s ease-in-out",
+          width: isBottomSearchOpen ? "100vw" : "3.5rem",
+          height: isBottomSearchOpen ? "6rem" : "3.5rem",
+          opacity: isMobile && !isBottomSearchOpen ? 1 : 0,
+          borderRadius: isBottomSearchOpen ? 0 : "50%",
+          transform: isBottomSearchOpen ? "translateY(50%)" : "translateY(0)",
+          backdropFilter: "blur(20px)",
+          color: "text.primary",
+          backgroundColor: isBottomSearchOpen
+            ? "transparent"
+            : isDarkMode
+            ? "rgba(26, 29, 41, 0.5)"
+            : "rgba(255, 255, 255, 0.5)",
+          "&:hover": {
+            backgroundColor: isBottomSearchOpen
+              ? "transparent"
+              : isDarkMode
+              ? "rgba(26, 29, 41, 0.9)"
+              : "rgba(255, 255, 255, 0.9)",
+            transform: "scale(1.1)",
+          },
+        }}
+      >
+        <SearchIcon
           sx={{
-            position: "fixed",
-            bottom: 24,
-            right: 24,
-            zIndex: 1000,
-            transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-            width: isBottomSearchOpen ? "100vw" : "3.5rem",
-            height: isBottomSearchOpen ? "6rem" : "3.5rem",
+            transition: "opacity 0.3s ease-in-out",
             opacity: isBottomSearchOpen ? 0 : 1,
-            borderRadius: isBottomSearchOpen ? 0 : "50%",
-            transform: isBottomSearchOpen ? "translateY(50%)" : "translateY(0)",
-            backdropFilter: "blur(20px)",
-            color: "text.primary",
-            backgroundColor: "rgba(255, 255, 255, 0.2)",
-            WebkitBackdropFilter: "blur(20px)",
-            "&:hover": {
-              backgroundColor: "rgba(255, 255, 255, 0.5)",
-              transform: isBottomSearchOpen ? "scale(0)" : "scale(1.1)",
-            },
           }}
-        >
-          <SearchIcon
-            sx={{
-              transition: "opacity 0.3s ease-in-out",
-              opacity: isBottomSearchOpen ? 0 : 1,
-            }}
-          />
-        </Fab>
-      )}
+        />
+      </Fab>
 
       {/* Bottom Search Pane */}
       <Box
@@ -194,8 +199,8 @@ export function AppBar() {
           right: 0,
           zIndex: 1300,
           backgroundColor: isDarkMode
-            ? "rgba(26, 29, 41, 0.3)"
-            : "rgba(255, 255, 255, 0.3)",
+            ? "rgba(26, 29, 41, 0.5)"
+            : "rgba(255, 255, 255, 0.5)",
           backdropFilter: "blur(20px)",
           WebkitBackdropFilter: "blur(20px)",
           borderTop: "1px solid",
