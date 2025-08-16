@@ -24,22 +24,22 @@ export function ThemeToggle(prop: IconButtonProps) {
       aria-label="toggle theme"
       {...prop}
     >
-      <DarkModeIcon
+      <LightModeIcon
         fontSize="small"
         sx={{
           transition: "transform 0.5s ease-in-out",
           transform: !isDarkMode
-            ? "rotate(-540deg) scale(0)"
+            ? "rotate(-270deg) scale(0)"
             : "rotate(0deg) scale(1)",
         }}
       />
-      <LightModeIcon
+      <DarkModeIcon
         fontSize="small"
         sx={{
           position: "absolute",
           transition: "transform 0.5s ease-in-out",
           transform: isDarkMode
-            ? "rotate(540deg) scale(0)"
+            ? "rotate(270deg) scale(0)"
             : "rotate(0deg) scale(1)",
         }}
       />
