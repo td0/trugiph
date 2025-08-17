@@ -28,9 +28,17 @@ function SearchPage() {
     <Box sx={{ py: 4 }}>
       <Container maxWidth="xl">
         <Typography
-          variant="h2"
           component="h1"
-          sx={{ textAlign: "center", mb: 1, fontStyle: "italic" }}
+          sx={{
+            textAlign: "center",
+            mb: 1,
+            fontStyle: "italic",
+            fontSize: {
+              xs: "1.75rem",
+              sm: "2rem",
+              md: "2.5rem",
+            },
+          }}
         >
           Search Results
         </Typography>

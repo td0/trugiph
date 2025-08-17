@@ -26,9 +26,17 @@ function HomePage() {
     <Box sx={{ py: 4 }}>
       <Container maxWidth="xl">
         <Typography
-          variant="h2"
-          component="h1"
-          sx={{ textAlign: "center", mb: 2, fontStyle: "italic" }}
+          component="h3"
+          sx={{
+            textAlign: "center",
+            mb: 2,
+            fontStyle: "italic",
+            fontSize: {
+              xs: "1.75rem", // mobile
+              sm: "2rem", // tablet
+              md: "2.5rem", // desktop and up
+            },
+          }}
         >
           Trending GIFs
         </Typography>
