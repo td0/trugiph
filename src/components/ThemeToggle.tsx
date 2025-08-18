@@ -6,8 +6,9 @@ import {
 import { useColorScheme } from "@mui/material/styles";
 
 export function ThemeToggle(prop: IconButtonProps) {
-  const { mode, setMode } = useColorScheme();
-  const isDarkMode = mode === "dark";
+  const { mode, setMode, systemMode } = useColorScheme();
+  const isDarkMode =
+    mode === "dark" || (mode === "system" && systemMode === "dark");
 
   if (!mode) {
     return null;

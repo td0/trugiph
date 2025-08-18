@@ -23,8 +23,9 @@ export function ImageWithSkeleton({
   borderRadius = 2,
   title,
 }: ImageWithSkeletonProps) {
-  const { mode: colorMode } = useColorScheme();
-  const isDarkMode = colorMode === "dark";
+  const { mode: colorMode, systemMode } = useColorScheme();
+  const isDarkMode =
+    colorMode === "dark" || (colorMode === "system" && systemMode === "dark");
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const animationPaused = useAtomValue(animationPausedAtom);

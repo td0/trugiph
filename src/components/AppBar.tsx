@@ -25,8 +25,9 @@ export function AppBar() {
   const params = useParams({ strict: false });
 
   const theme = useTheme();
-  const { mode: colorMode } = useColorScheme();
-  const isDarkMode = colorMode === "dark";
+  const { mode: colorMode, systemMode } = useColorScheme();
+  const isDarkMode =
+    colorMode === "dark" || (colorMode === "system" && systemMode === "dark");
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   useEffect(() => {

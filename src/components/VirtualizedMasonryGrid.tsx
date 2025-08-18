@@ -28,8 +28,9 @@ export function VirtualizedMasonryGrid({
   gap = 16,
 }: VirtualizedMasonryGridProps) {
   const theme = useTheme();
-  const { mode: colorMode } = useColorScheme();
-  const isDarkMode = colorMode === "dark";
+  const { mode: colorMode, systemMode } = useColorScheme();
+  const isDarkMode =
+    colorMode === "dark" || (colorMode === "system" && systemMode === "dark");
   const listRef = useRef<HTMLDivElement>(null);
 
   // Responsive column count
