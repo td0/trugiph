@@ -70,8 +70,9 @@ export function AppBar() {
             <Toolbar
               disableGutters
               sx={{
-                minHeight: "auto",
-                height: isMobile ? "auto" : isScrolled ? "auto" : "8rem",
+                transition: "height 0.3s ease",
+                minHeight: "fit-content",
+                height: isMobile ? "3rem" : isScrolled ? "4.5rem" : "8rem",
                 py: isMobile ? 1 : 0,
                 flexDirection: "row",
                 alignItems: !isScrolled && !isMobile ? "start" : "center",
@@ -80,7 +81,7 @@ export function AppBar() {
               <Logo
                 sx={{
                   flex: 1,
-                  transition: "all 0.3s ease",
+                  transition: "font-size 0.3s ease, margin 0.3s ease",
                   mr: isMobile ? 0 : isScrolled ? 4 : 0,
                   fontSize: isMobile || isScrolled ? "1.7rem" : "2.7rem",
                 }}
@@ -111,8 +112,9 @@ export function AppBar() {
                   value={searchValue}
                   onChange={(v) => setSearchValue(v)}
                   sx={{
+                    transition: "width 0.3s ease",
+                    minWidth: "21rem",
                     width: "100%",
-                    transition: "all 0.3s ease",
                   }}
                 />
                 {!isScrolled && (
@@ -120,9 +122,10 @@ export function AppBar() {
                     variant="body2"
                     color="text.secondary"
                     sx={{
+                      transition: "opacity 0.3s ease",
+                      mt: 1,
                       textAlign: "center",
                       opacity: 0.8,
-                      transition: "opacity 0.3s ease",
                     }}
                   >
                     {searchValue.trim().length > 0
@@ -228,7 +231,7 @@ export function AppBar() {
           <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
             <SearchInput
               autoFocus
-              searchVariant="expanded"
+              searchVariant="bottom"
               onSearch={() => setIsBottomSearchOpen(false)}
               value={searchValue}
               onChange={(v) => setSearchValue(v)}
