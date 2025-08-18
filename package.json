@@ -14,7 +14,7 @@
     "test:coverage": "jest --coverage"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
